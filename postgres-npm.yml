@@ -1,0 +1,26 @@
+version: "3"
+services:
+    web:
+      image: node
+      command: npm start
+      ports:
+         - "8000:4242"
+      # links:
+      #   - db
+      working_dir: /src
+      environment:
+        SEQ_DB: database_test
+        SEQ_USER: root
+        SEQ_PW: root
+        PORT: 4242
+        # DATABASE_URL: postgres://root:root@127.0.0.1:5432/mydatabase
+        DATABASE_URL: "postgres://root:root@db:5432/database_test"
+      volumes:
+          - ./:/src
+    db:
+      image: postgres
+      ports:
+          - "5432:5432"
+      environment:
+        POSTGRES_USER: root
+        POSTGRES_PASSWORD: root

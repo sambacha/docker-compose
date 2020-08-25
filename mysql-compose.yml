@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+ nodejs-db:
+   container_name: nodejs-db
+   image: mysql
+   command: --default-authentication-plugin=mysql_native_password
+   restart: always
+   ports:
+     - 3389:3306
+   environment:
+     MYSQL_ROOT_PASSWORD: example
+     MYSQL_DATABASE: nodejs-db
+     MYSQL_USER: user
+     MYSQL_PASSWORD: password

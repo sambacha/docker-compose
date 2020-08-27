@@ -1,0 +1,6 @@
+log:
+  command: '-t XXXXXX-XXXXX-XXXXX-XXXXX'
+  image: 'logentries/docker-logentries’
+  restart: always
+  volumes:
+    - '/var/run/docker.sock:/var/run/docker.sock'

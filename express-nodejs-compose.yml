@@ -1,0 +1,27 @@
+# docker-compose
+# create 'docker.env' e.g. with API_TAG=app-name , CLI_TAG=app-cli-name 
+version: '3'
+services:
+  api:
+    image: ${API_TAG}
+    build: .
+    networks:
+      - backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+    env_file:
+      - docker.env
+
+  cli:
+    image: ${CLI_TAG}
+    networks:
+      - backend
+    command: sh
+     env_file:
+      - docker.env
+
+networks:
+  backend:
+    driver: bridge
